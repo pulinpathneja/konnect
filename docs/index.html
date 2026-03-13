@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Konnect - Platform Documentation</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.7; color: #1a1a2e; background: #f8f9fa; }
+  .container { max-width: 960px; margin: 0 auto; padding: 20px 24px; }
+  .header { background: linear-gradient(135deg, #E8530E, #ff7043); color: white; padding: 48px 24px; text-align: center; }
+  .header h1 { font-size: 2.5rem; margin-bottom: 8px; }
+  .header p { font-size: 1.1rem; opacity: 0.9; }
+  h2 { font-size: 1.6rem; color: #E8530E; margin: 40px 0 16px; padding-bottom: 8px; border-bottom: 2px solid #E8530E; }
+  h3 { font-size: 1.2rem; color: #333; margin: 24px 0 12px; }
+  p { margin: 8px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9rem; overflow-x: auto; display: block; }
+  th, td { padding: 10px 12px; text-align: left; border: 1px solid #ddd; white-space: nowrap; }
+  th { background: #f0f0f0; font-weight: 600; position: sticky; top: 0; }
+  tr:nth-child(even) { background: #fafafa; }
+  tr:hover { background: #fff3e0; }
+  code { background: #f4f4f4; padding: 2px 6px; border-radius: 4px; font-size: 0.88em; color: #d63384; }
+  pre { background: #1a1a2e; color: #e0e0e0; padding: 16px; border-radius: 8px; overflow-x: auto; margin: 12px 0; font-size: 0.85rem; line-height: 1.5; }
+  pre code { background: none; color: inherit; padding: 0; }
+  ul, ol { margin: 8px 0 8px 24px; }
+  li { margin: 4px 0; }
+  strong { color: #333; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; }
+  .badge-green { background: #e8f5e9; color: #2e7d32; }
+  .badge-blue { background: #e3f2fd; color: #1565c0; }
+  .badge-orange { background: #fff3e0; color: #e65100; }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 16px 0; }
+  .service-card { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-left: 4px solid #E8530E; }
+  .service-card h4 { margin-bottom: 8px; color: #E8530E; }
+  .service-card .tech { color: #666; font-size: 0.85rem; }
+  .service-card .url { font-size: 0.8rem; color: #1565c0; word-break: break-all; }
+  .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 16px 0; }
+  .feature-item { background: white; border-radius: 8px; padding: 12px 16px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+  .feature-item strong { display: block; margin-bottom: 4px; }
+  hr { border: none; border-top: 1px solid #e0e0e0; margin: 32px 0; }
+  .arch-diagram { background: #1a1a2e; color: #4fc3f7; padding: 20px; border-radius: 8px; font-family: monospace; font-size: 0.8rem; line-height: 1.6; overflow-x: auto; white-space: pre; text-align: center; }
+  .toc { background: white; border-radius: 12px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin: 24px 0; }
+  .toc h3 { margin-top: 0; }
+  .toc a { color: #E8530E; text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .toc ul { list-style: none; margin-left: 0; }
+  .toc li { padding: 4px 0; }
+  .toc li::before { content: "# "; color: #ccc; }
+  .flow-diagram { background: white; border-radius: 8px; padding: 20px; margin: 16px 0; border: 1px solid #e0e0e0; }
+  .footer { text-align: center; padding: 32px 24px; color: #888; font-size: 0.85rem; }
+  @media (max-width: 768px) {
+    .header h1 { font-size: 1.8rem; }
+    table { font-size: 0.8rem; }
+    th, td { padding: 6px 8px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Konnect</h1>
+  <p>Expert Mentorship Platform - Complete Documentation</p>
+</div>
+
+<div class="container">
+
+<div class="toc">
+  <h3>Table of Contents</h3>
+  <ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#architecture">Architecture</a></li>
+    <li><a href="#tech-stack">Tech Stack</a></li>
+    <li><a href="#pages-user">User Frontend Pages</a></li>
+    <li><a href="#pages-mentor">Mentor Portal Pages</a></li>
+    <li><a href="#api-endpoints">Backend API Endpoints</a></li>
+    <li><a href="#realtime">Real-Time Features (Socket.IO)</a></li>
+    <li><a href="#webrtc">WebRTC Voice/Video Calls</a></li>
+    <li><a href="#database">Database Schema</a></li>
+    <li><a href="#onboarding">Mentor Onboarding Pipeline</a></li>
+    <li><a href="#billing">Billing System</a></li>
+    <li><a href="#deployment">Deployment</a></li>
+    <li><a href="#security">Security</a></li>
+    <li><a href="#features">Features Summary</a></li>
+  </ul>
+</div>
+
+<h2 id="overview">Overview</h2>
+<p><strong>Konnect</strong> is a full-stack, real-time mentorship marketplace that connects users (mentees) with expert mentors for paid, per-minute chat and voice/video call sessions. The platform includes three applications and a shared backend.</p>
+
+<div class="services-grid">
+  <div class="service-card">
+    <h4>Backend API</h4>
+    <p class="tech">Node.js + Express + Socket.IO</p>
+    <p class="url">https://konnect-api-852352036956.us-central1.run.app</p>
+  </div>
+  <div class="service-card">
+    <h4>User Frontend</h4>
+    <p class="tech">React + Vite + Tailwind CSS</p>
+    <p class="url">https://reinovate-363109.web.app</p>
+  </div>
+  <div class="service-card">
+    <h4>Mentor Portal</h4>
+    <p class="tech">Next.js 16 + Tailwind CSS</p>
+    <p class="url">https://konnect-mentor-852352036956.us-central1.run.app</p>
+  </div>
+</div>
+
+<p><strong>Firebase Project:</strong> <code>reinovate-363109</code></p>
+
+<hr>
+
+<h2 id="architecture">Architecture</h2>
+<div class="arch-diagram">
+                    +-------------------+
+                    |   Firebase Auth   |
+                    |   Firestore DB    |
+                    |   Cloud Storage   |
+                    +--------+----------+
+                             |
+          +------------------+------------------+
+          |                  |                  |
+  +-------v-------+  +------v------+  +--------v--------+
+  | User Frontend  |  | Backend API |  | Mentor Portal   |
+  | (React + Vite) |  | (Express +  |  | (Next.js 16)    |
+  | Firebase       |  |  Socket.IO) |  | Firebase        |
+  | Hosting        |  | Cloud Run   |  | Cloud Run       |
+  +-------+--------+  +------+------+  +--------+--------+
+          |                  |                   |
+          +--------+---------+-------------------+
+                   |
+            +------v------+
+            |  Socket.IO  |
+            | (Real-time) |
+            | Chat, Calls |
+            | Queue, Bill |
+            +-------------+
+</div>
+
+<hr>
+
+<h2 id="tech-stack">Tech Stack</h2>
+
+<h3>Backend</h3>
+<ul>
+  <li><strong>Runtime:</strong> Node.js 18 + TypeScript</li>
+  <li><strong>Framework:</strong> Express.js</li>
+  <li><strong>Real-time:</strong> Socket.IO 4.8</li>
+  <li><strong>Database:</strong> Firebase Firestore</li>
+  <li><strong>Auth:</strong> Firebase Admin SDK</li>
+  <li><strong>Security:</strong> Helmet, CORS, express-rate-limit, Zod validation</li>
+  <li><strong>Deployment:</strong> Docker + Google Cloud Run</li>
+</ul>
+
+<h3>User Frontend (career-cosmos-connect)</h3>
+<ul>
+  <li><strong>Framework:</strong> React 18 + TypeScript + Vite</li>
+  <li><strong>UI:</strong> Tailwind CSS + shadcn/ui (80+ components)</li>
+  <li><strong>State:</strong> TanStack React Query + Context API</li>
+  <li><strong>Real-time:</strong> Socket.IO Client</li>
+  <li><strong>Calling:</strong> WebRTC (native RTCPeerConnection)</li>
+  <li><strong>Auth:</strong> Firebase Auth</li>
+  <li><strong>Deployment:</strong> Firebase Hosting</li>
+</ul>
+
+<h3>Mentor Portal (konnect)</h3>
+<ul>
+  <li><strong>Framework:</strong> Next.js 16 + TypeScript</li>
+  <li><strong>UI:</strong> Tailwind CSS + Framer Motion</li>
+  <li><strong>State:</strong> Zustand</li>
+  <li><strong>Real-time:</strong> Socket.IO Client</li>
+  <li><strong>Calling:</strong> WebRTC (RTCPeerConnection)</li>
+  <li><strong>Auth:</strong> Firebase Auth (Google OAuth + Email)</li>
+  <li><strong>Icons:</strong> Lucide React + React Icons</li>
+  <li><strong>Deployment:</strong> Docker + Google Cloud Run</li>
+</ul>
+
+<hr>
+
+<h2 id="pages-user">User Frontend Pages</h2>
+<table>
+  <thead>
+    <tr><th>#</th><th>Route</th><th>Page</th><th>Description</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td><code>/</code></td><td><strong>Home</strong></td><td>Marketing landing page with hero, category cards, expert previews, stats, testimonials, CTA</td></tr>
+    <tr><td>2</td><td><code>/login</code></td><td><strong>Login</strong></td><td>Email/password login + Google Sign-In</td></tr>
+    <tr><td>3</td><td><code>/signup</code></td><td><strong>Signup</strong></td><td>User registration with name, email, password + Google Sign-Up</td></tr>
+    <tr><td>4</td><td><code>/onboarding</code></td><td><strong>Onboarding</strong></td><td>3-step profile setup: Profile info, Interest categories (12 options), Goals (8 options)</td></tr>
+    <tr><td>5</td><td><code>/explore</code></td><td><strong>Explore Mentors</strong></td><td>Browse mentors with search, specialty filter tabs, sort (rating/price/popularity), online toggle</td></tr>
+    <tr><td>6</td><td><code>/expert/:id</code></td><td><strong>Mentor Profile</strong></td><td>Detailed mentor view: bio, specialties, rating, reviews, pricing, Chat/Call/Video booking</td></tr>
+    <tr><td>7</td><td><code>/chat</code></td><td><strong>Chat &amp; Calls</strong></td><td>Real-time chat + voice/video calls, file attachments, billing bar, queue status, review modal</td></tr>
+    <tr><td>8</td><td><code>/dashboard</code></td><td><strong>Dashboard</strong></td><td>Mentor-only: online toggle, stats cards, session history, pending requests, earnings</td></tr>
+    <tr><td>9</td><td><code>/wallet</code></td><td><strong>Wallet</strong></td><td>Balance card, quick recharge (100/200/500/1000), transaction history with type filters</td></tr>
+    <tr><td>10</td><td><code>/profile</code></td><td><strong>Profile</strong></td><td>Edit name, phone, bio; role/verified badges; notifications; change password; delete account</td></tr>
+    <tr><td>11</td><td><code>/admin</code></td><td><strong>Admin Dashboard</strong></td><td>Live stats, capacity gauges, live session monitor, online experts grid</td></tr>
+    <tr><td>12</td><td><code>/admin/mentors</code></td><td><strong>Mentor Management</strong></td><td>Application pipeline (Applied &rarr; Verified &rarr; Approved), bulk import, export</td></tr>
+    <tr><td>13</td><td><code>/admin/users</code></td><td><strong>User Management</strong></td><td>User list, search/filter, session &amp; transaction history per user</td></tr>
+    <tr><td>14</td><td><code>/admin/sessions</code></td><td><strong>Session Management</strong></td><td>All sessions with filters, active sessions view, refund capability</td></tr>
+    <tr><td>15</td><td><code>/admin/analytics</code></td><td><strong>Analytics</strong></td><td>Historical charts and trends (Recharts)</td></tr>
+    <tr><td>16</td><td><code>/admin/finance</code></td><td><strong>Finance</strong></td><td>Revenue tracking, payment settlements, financial reports</td></tr>
+    <tr><td>17</td><td><code>/admin/settings</code></td><td><strong>Settings</strong></td><td>Platform configuration management</td></tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h2 id="pages-mentor">Mentor Portal Pages</h2>
+<table>
+  <thead>
+    <tr><th>#</th><th>Route</th><th>Page</th><th>Description</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td><code>/</code></td><td><strong>Landing</strong></td><td>Hero + How it Works (3 steps) + Stats + Features (6 cards) + Testimonials + CTA</td></tr>
+    <tr><td>2</td><td><code>/auth/login</code></td><td><strong>Login</strong></td><td>Email/password + Google Sign-In (popup with redirect fallback) + Demo mode</td></tr>
+    <tr><td>3</td><td><code>/auth/signup</code></td><td><strong>Signup</strong></td><td>Full name, email, password + Google Sign-Up + Demo mode</td></tr>
+    <tr><td>4</td><td><code>/onboarding</code></td><td><strong>Mentor Registration</strong></td><td>4-step wizard: Professional Info &rarr; Social Links &rarr; Resume Upload &rarr; Review &amp; Submit</td></tr>
+    <tr><td>5</td><td><code>/dashboard</code></td><td><strong>Mentor Dashboard</strong></td><td>Online/offline toggle, earnings cards, recent sessions, pending requests, quick stats</td></tr>
+    <tr><td>6</td><td><code>/chat</code></td><td><strong>Chat List</strong></td><td>WhatsApp-style conversation list with search, online status, unread badges</td></tr>
+    <tr><td>7</td><td><code>/chat/[chatId]</code></td><td><strong>Chat &amp; Calls</strong></td><td>Full messaging + WebRTC voice/video calls, incoming call UI, mute/video toggles, billing bar</td></tr>
+    <tr><td>8</td><td><code>/explore</code></td><td><strong>Explore Mentors</strong></td><td>Browse with category filter tabs, price slider, rating filter, online toggle, sort options</td></tr>
+    <tr><td>9</td><td><code>/mentor/[id]</code></td><td><strong>Mentor Profile</strong></td><td>Avatar, specialties, rating, reviews, bio, languages, price, chat/call actions</td></tr>
+    <tr><td>10</td><td><code>/wallet</code></td><td><strong>Wallet</strong></td><td>Balance card, quick recharge, transaction history, add money modal</td></tr>
+    <tr><td>11</td><td><code>/profile</code></td><td><strong>Profile Settings</strong></td><td>Avatar, name, email, role badge, edit fields, change password, notifications</td></tr>
+    <tr><td>12</td><td><code>/admin</code></td><td><strong>Admin Panel</strong></td><td>Stats cards, tabbed interface (Users, Mentors, Categories, Analytics)</td></tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h2 id="api-endpoints">Backend API Endpoints</h2>
+
+<h3>Authentication</h3>
+<table>
+  <thead><tr><th>Method</th><th>Endpoint</th><th>Auth</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td><span class="badge badge-green">POST</span></td><td><code>/api/auth/verify</code></td><td>Required</td><td>Verify Firebase token, create/get user profile</td></tr>
+  </tbody>
+</table>
+
+<h3>Experts / Mentors</h3>
+<table>
+  <thead><tr><th>Method</th><th>Endpoint</th><th>Auth</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td><span class="badge badge-blue">GET</span></td><td><code>/api/experts</code></td><td>Public</td><td>List experts (filters: specialty, available, minRating, maxPrice, search, sort)</td></tr>
+    <tr><td><span class="badge badge-blue">GET</span></td><td><code>/api/experts/specialties</code></td><td>Public</td><td>List all specialties</td></tr>
+    <tr><td><span class="badge badge-blue">GET</span></td><td><code>/api/experts/:id</code></td><td>Public</td><td>Get expert by ID</td></tr>
+    <tr><td><span class="badge badge-blue">GET</span></td><td><code>/api/experts/:id/reviews</code></td><td>Public</td><td>Get expert reviews (paginated)</td></tr>
+    <tr><td><span class="badge badge-green">POST</span></td><td><code>/api/experts/register</code></td><td>Required</td><td>Mentor self-registration with onboarding data</td></tr>
+    <tr><td><span class="badge badge-blue">GET</span></td><td><code>/api/experts/me</code></td><td>Required</td><td>Get own mentor profile</td></tr>
+    <tr><td><span class="badge badge-orange">PUT</span></td><td><code>/api/experts/me/resume</code></td><td>Required</td><td>Update resume URL</td></tr>
+    <tr><td><span class="badge badge-orange">PUT</span></td><td><code>/api/experts/:id</code></td><td>Required</td><td>Update own mentor profile</td></tr>
+    <tr><td><span class="badge badge-green">POST</span></td><td><code>/api/experts</code></td><td>Admin</td><td>Create new expert</td></tr>
+    <tr><td><span class="badge" style="background:#ffebee;color:#c62828">DELETE</span></td><td><code>/api/experts/:id</code></td><td>Admin</td><td>Delete expert</td></tr>
+  </tbody>
+</table>
+
+<h3>Wallet</h3>
+<table>
+  <thead><tr><th>Method</th><th>Endpoint</th><th>Auth</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td><span class="badge badge-blue">GET</span></td><td><code>/api/wallet</code></td><td>Required</td><td>Get wallet balance</td></tr>
+    <tr><td><span class="badge badge-green">POST</span></td><td><code>/api/wallet/deposit</code></td><td>Required</td><td>Add funds (max 10,000)</td></tr>
+    <tr><td><span class="badge badge-green">POST</span></td><td><code>/api/wallet/withdraw</code></td><td>Required</td><td>Withdraw funds (max 10,000)</td></tr>
+    <tr><td><span class="badge badge-blue">GET</span></td><td><code>/api/wallet/transactions</code></td><td>Required</td><td>Get transaction history (paginated)</td></tr>
+    <tr><td><span class="badge badge-blue">GET</span></td><td><code>/api/wallet/transactions/:id</code></td><td>Required</td><td>Get transaction by ID</td></tr>
+  </tbody>
+</table>
+
+<h3>Sessions</h3>
+<table>
+  <thead><tr><th>Method</th><th>Endpoint</th><th>Auth</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td><span class="badge badge-green">POST</span></td><td><code>/api/sessions</code></td><td>Required</td><td>Book session (expertId, type, scheduledAt, duration)</td></tr>
+    <tr><td><span class="badge badge-blue">GET</span></td><td><code>/api/sessions</code></td><td>Required</td><td>Get user sessions (filters: status, type)</td></tr>
+    <tr><td><span class="badge badge-blue">GET</span></td><td><code>/api/sessions/:id</code></td><td>Required</td><td>Get session by ID</td></tr>
+    <tr><td><span class="badge badge-green">POST</span></td><td><code>/api/sessions/:id/cancel</code></td><td>Required</td><td>Cancel session with refund</td></tr>
+    <tr><td><span class="badge badge-blue">GET</span></td><td><code>/api/sessions/expert</code></td><td>Expert</td><td>Get expert's sessions</td></tr>
+  </tbody>
+</table>
+
+<h3>Admin (28 endpoints)</h3>
+<table>
+  <thead><tr><th>Method</th><th>Endpoint</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td><span class="badge badge-blue">GET</span></td><td><code>/api/admin/metrics</code></td><td>Current platform metrics</td></tr>
+    <tr><td><span class="badge badge-blue">GET</span></td><td><code>/api/admin/metrics/history</code></td><td>Historical metrics</td></tr>
+    <tr><td><span class="badge badge-blue">GET</span></td><td><code>/api/admin/metrics/peak</code></td><td>Peak usage metrics</td></tr>
+    <tr><td><span class="badge badge-blue">GET</span></td><td><code>/api/admin/metrics/realtime</code></td><td>Real-time state (online experts, active chats, queues)</td></tr>
+    <tr><td><span class="badge badge-blue">GET</span></td><td><code>/api/admin/users</code></td><td>List users (search, role, pagination)</td></tr>
+    <tr><td><span class="badge badge-blue">GET</span></td><td><code>/api/admin/users/:uid</code></td><td>User details + wallet + sessions</td></tr>
+    <tr><td><span class="badge badge-orange">PATCH</span></td><td><code>/api/admin/users/:uid</code></td><td>Update user (role, disabled, name)</td></tr>
+    <tr><td><span class="badge badge-blue">GET</span></td><td><code>/api/admin/mentors</code></td><td>List all mentors</td></tr>
+    <tr><td><span class="badge badge-orange">PATCH</span></td><td><code>/api/admin/mentors/:id</code></td><td>Update mentor</td></tr>
+    <tr><td><span class="badge badge-green">POST</span></td><td><code>/api/admin/mentors/bulk</code></td><td>Bulk import mentors (CSV)</td></tr>
+    <tr><td><span class="badge badge-blue">GET</span></td><td><code>/api/admin/mentors/export</code></td><td>Export mentors as CSV</td></tr>
+    <tr><td><span class="badge badge-green">POST</span></td><td><code>/api/admin/mentors/import-sheet</code></td><td>Import from Google Sheets</td></tr>
+    <tr><td><span class="badge badge-blue">GET</span></td><td><code>/api/admin/mentor-applications</code></td><td>List mentor applications</td></tr>
+    <tr><td><span class="badge badge-orange">PUT</span></td><td><code>/api/admin/mentor-applications/:id/status</code></td><td>Update application status</td></tr>
+    <tr><td><span class="badge badge-blue">GET</span></td><td><code>/api/admin/sessions</code></td><td>List all sessions</td></tr>
+    <tr><td><span class="badge badge-green">POST</span></td><td><code>/api/admin/sessions/:id/refund</code></td><td>Refund a session</td></tr>
+    <tr><td><span class="badge badge-blue">GET</span></td><td><code>/api/admin/revenue</code></td><td>Revenue breakdown</td></tr>
+    <tr><td><span class="badge badge-green">POST</span></td><td><code>/api/admin/wallets/:userId/adjust</code></td><td>Manual wallet adjustment</td></tr>
+    <tr><td><span class="badge badge-blue">GET</span></td><td><code>/api/admin/config</code></td><td>Platform configuration</td></tr>
+    <tr><td><span class="badge badge-orange">PATCH</span></td><td><code>/api/admin/config</code></td><td>Update configuration</td></tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h2 id="realtime">Real-Time Features (Socket.IO)</h2>
+
+<h3>Connection Flow</h3>
+<ol>
+  <li>Client connects with Firebase auth token in handshake</li>
+  <li>Server verifies token via Firebase Admin SDK</li>
+  <li>Client registers as <code>user</code> or <code>expert</code> with name</li>
+</ol>
+
+<h3>Chat Events</h3>
+<table>
+  <thead><tr><th>Event</th><th>Direction</th><th>Payload</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td><code>register</code></td><td>Client &rarr; Server</td><td><code>{ userId, userType, name }</code></td><td>Register user on platform</td></tr>
+    <tr><td><code>get-online-experts</code></td><td>Client &rarr; Server</td><td>-</td><td>Request available experts</td></tr>
+    <tr><td><code>online-experts</code></td><td>Server &rarr; Client</td><td><code>Expert[]</code></td><td>List of available experts</td></tr>
+    <tr><td><code>expert-online</code></td><td>Server &rarr; Client</td><td><code>Expert</code></td><td>Expert came online</td></tr>
+    <tr><td><code>expert-offline</code></td><td>Server &rarr; Client</td><td><code>{ expertId }</code></td><td>Expert went offline</td></tr>
+    <tr><td><code>request-chat</code></td><td>Client &rarr; Server</td><td><code>{ userId, userName, expertId }</code></td><td>Request chat with expert</td></tr>
+    <tr><td><code>queue-joined</code></td><td>Server &rarr; Client</td><td><code>{ position, expertId }</code></td><td>Added to queue</td></tr>
+    <tr><td><code>chat-started</code></td><td>Server &rarr; Client</td><td><code>{ chatId, expert/user, pricePerMin }</code></td><td>Chat session begun</td></tr>
+    <tr><td><code>chat-message</code></td><td>Client &rarr; Server</td><td><code>{ chatId, message, senderId }</code></td><td>Send message</td></tr>
+    <tr><td><code>new-message</code></td><td>Server &rarr; Client</td><td><code>{ chatId, message, senderId, timestamp }</code></td><td>Receive message</td></tr>
+    <tr><td><code>billing-update</code></td><td>Server &rarr; Client</td><td><code>{ chatId, duration, totalCharged, balance }</code></td><td>Per-minute billing</td></tr>
+    <tr><td><code>chat-warning</code></td><td>Server &rarr; Client</td><td><code>{ type: 'low-balance' }</code></td><td>Balance warning</td></tr>
+    <tr><td><code>chat-ended</code></td><td>Server &rarr; Client</td><td><code>{ chatId, duration, totalCharged }</code></td><td>Chat ended</td></tr>
+    <tr><td><code>end-chat</code></td><td>Client &rarr; Server</td><td><code>{ chatId }</code></td><td>Client ends chat</td></tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h2 id="webrtc">WebRTC Voice/Video Calls</h2>
+
+<h3>Signaling Events</h3>
+<table>
+  <thead><tr><th>Event</th><th>Direction</th><th>Payload</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td><code>call-offer</code></td><td>Client &rarr; Server</td><td><code>{ chatId, offer, callType }</code></td><td>SDP offer + call type (voice/video)</td></tr>
+    <tr><td><code>call-offer</code></td><td>Server &rarr; Client</td><td><code>{ chatId, offer, callType, callerId }</code></td><td>Relayed to other participant</td></tr>
+    <tr><td><code>call-answer</code></td><td>Client &rarr; Server</td><td><code>{ chatId, answer }</code></td><td>SDP answer</td></tr>
+    <tr><td><code>call-answer</code></td><td>Server &rarr; Client</td><td><code>{ chatId, answer }</code></td><td>Relayed to caller</td></tr>
+    <tr><td><code>ice-candidate</code></td><td>Bidirectional</td><td><code>{ chatId, candidate }</code></td><td>ICE candidate exchange</td></tr>
+    <tr><td><code>call-ended</code></td><td>Bidirectional</td><td><code>{ chatId, reason? }</code></td><td>Call terminated</td></tr>
+    <tr><td><code>call-rejected</code></td><td>Client &rarr; Server</td><td><code>{ chatId }</code></td><td>Call declined</td></tr>
+  </tbody>
+</table>
+
+<h3>Call Flow</h3>
+<pre><code>  User (Caller)                    Backend                    Mentor (Callee)
+       |                              |                              |
+       |-- call-offer {offer, type} ->|                              |
+       |                              |-- call-offer {offer, type} ->|
+       |                              |                              |
+       |                              |<- call-answer {answer} ------|
+       |<- call-answer {answer} ------|                              |
+       |                              |                              |
+       |-- ice-candidate ------------>|-- ice-candidate ------------>|
+       |<- ice-candidate -------------|<- ice-candidate -------------|
+       |                              |                              |
+       |<==========  P2P Audio/Video Connection  ================>   |
+       |                              |                              |
+       |-- call-ended --------------->|-- call-ended --------------->|</code></pre>
+
+<hr>
+
+<h2 id="database">Database Schema (Firestore)</h2>
+
+<h3>users</h3>
+<pre><code>{
+  "id": "firebase-uid",
+  "email": "user@example.com",
+  "name": "John Doe",
+  "role": "user | expert | admin",
+  "disabled": false,
+  "createdAt": "2025-01-01T00:00:00Z"
+}</code></pre>
+
+<h3>experts</h3>
+<pre><code>{
+  "id": "auto-generated",
+  "name": "Jane Smith",
+  "email": "jane@example.com",
+  "title": "Senior Software Engineer",
+  "company": "Google",
+  "experience": 8,
+  "rating": 4.8,
+  "orders": 150,
+  "pricePerMin": 15,
+  "specialties": ["Tech Interviews", "System Design"],
+  "languages": ["English", "Hindi"],
+  "available": true,
+  "mentorStatus": "applied | documents_verified | call_scheduled | call_done | approved | rejected",
+  "onboardingData": {
+    "phone": "+91...",
+    "linkedinUrl": "...",
+    "resumeUrl": "...",
+    "appliedAt": "2025-01-01T00:00:00Z"
+  }
+}</code></pre>
+
+<h3>wallets</h3>
+<pre><code>{
+  "id": "user-id",
+  "userId": "firebase-uid",
+  "balance": 500,
+  "currency": "INR"
+}</code></pre>
+
+<h3>transactions</h3>
+<pre><code>{
+  "id": "auto-generated",
+  "userId": "firebase-uid",
+  "type": "deposit | withdraw | payment | earning | refund",
+  "amount": 100,
+  "currency": "INR",
+  "status": "completed",
+  "description": "Wallet recharge"
+}</code></pre>
+
+<h3>sessions</h3>
+<pre><code>{
+  "id": "auto-generated",
+  "userId": "firebase-uid",
+  "expertId": "expert-id",
+  "type": "chat | call",
+  "status": "pending | confirmed | in_progress | completed | cancelled",
+  "duration": 30,
+  "totalAmount": 450
+}</code></pre>
+
+<h3>platform_config</h3>
+<pre><code>{
+  "maxConcurrentMentors": 50,
+  "maxSessionsPerMentor": 1,
+  "defaultPricePerMin": 10,
+  "platformFeePercent": 20,
+  "maxSessionDurationMins": 120
+}</code></pre>
+
+<hr>
+
+<h2 id="onboarding">Mentor Onboarding Pipeline</h2>
+<div class="flow-diagram" style="text-align: center; font-size: 0.95rem;">
+  <p>
+    <span class="badge badge-blue" style="padding: 6px 16px; font-size: 0.9rem;">Applied</span>
+    &rarr;
+    <span class="badge badge-orange" style="padding: 6px 16px; font-size: 0.9rem;">Documents Verified</span>
+    &rarr;
+    <span class="badge badge-orange" style="padding: 6px 16px; font-size: 0.9rem;">Call Scheduled</span>
+    &rarr;
+    <span class="badge badge-orange" style="padding: 6px 16px; font-size: 0.9rem;">Call Done</span>
+    &rarr;
+    <span class="badge badge-green" style="padding: 6px 16px; font-size: 0.9rem;">Approved</span>
+  </p>
+  <p style="margin-top: 12px; color: #888;">or &rarr; <span class="badge" style="background:#ffebee;color:#c62828;padding: 4px 12px;">Rejected</span></p>
+</div>
+<ol>
+  <li><strong>Applied</strong> - Mentor submits registration form (profile, links, resume)</li>
+  <li><strong>Documents Verified</strong> - Admin reviews uploaded documents</li>
+  <li><strong>Call Scheduled</strong> - Admin schedules verification call</li>
+  <li><strong>Call Done</strong> - Verification call completed</li>
+  <li><strong>Approved</strong> - Mentor can go online and accept sessions</li>
+  <li><strong>Rejected</strong> - Application denied with reason</li>
+</ol>
+
+<hr>
+
+<h2 id="billing">Billing System</h2>
+
+<h3>Per-Minute Chat Billing</h3>
+<ol>
+  <li>User initiates chat with mentor</li>
+  <li>System validates wallet balance (minimum 1 minute)</li>
+  <li>Chat starts - <strong>first minute charged immediately</strong></li>
+  <li>Every 60 seconds, <code>pricePerMin</code> is deducted from user wallet</li>
+  <li><strong>Low balance warning</strong> at &lt; 3 minutes remaining</li>
+  <li><strong>Zero balance warning</strong> at 0 balance with 30-second grace period</li>
+  <li>Auto-disconnect if balance remains zero after grace period</li>
+  <li>Session summary sent with total duration and charges</li>
+</ol>
+
+<h3>Currency</h3>
+<p>All transactions are in <strong>INR (Indian Rupees)</strong></p>
+
+<h3>Wallet Operations</h3>
+<ul>
+  <li><strong>Deposit:</strong> Add funds (max 10,000 per transaction)</li>
+  <li><strong>Withdraw:</strong> Withdraw earnings (max 10,000 per transaction)</li>
+  <li><strong>Payment:</strong> Auto-deducted during chat sessions</li>
+  <li><strong>Earning:</strong> Credited to mentor wallet after session</li>
+  <li><strong>Refund:</strong> Admin-initiated refund for cancelled sessions</li>
+</ul>
+
+<hr>
+
+<h2 id="deployment">Deployment</h2>
+
+<h3>Backend (Cloud Run)</h3>
+<pre><code># Build Docker image
+docker build --platform linux/amd64 \
+  -t us-central1-docker.pkg.dev/reinovate-363109/cloud-run-source-deploy/konnect-api:latest .
+
+# Push to Artifact Registry
+docker push us-central1-docker.pkg.dev/reinovate-363109/cloud-run-source-deploy/konnect-api:latest
+
+# Deploy to Cloud Run
+gcloud run deploy konnect-api \
+  --image us-central1-docker.pkg.dev/reinovate-363109/cloud-run-source-deploy/konnect-api:latest \
+  --region us-central1 --platform managed --allow-unauthenticated \
+  --session-affinity --timeout 3600 --min-instances 1</code></pre>
+
+<h3>User Frontend (Firebase Hosting)</h3>
+<pre><code>cd career-cosmos-connect
+npm run build
+firebase deploy --only hosting</code></pre>
+
+<h3>Mentor Portal (Cloud Run)</h3>
+<pre><code># Build and deploy
+docker build --platform linux/amd64 \
+  -t us-central1-docker.pkg.dev/reinovate-363109/cloud-run-source-deploy/konnect-mentor:latest .
+
+docker push us-central1-docker.pkg.dev/reinovate-363109/cloud-run-source-deploy/konnect-mentor:latest
+
+gcloud run deploy konnect-mentor \
+  --image us-central1-docker.pkg.dev/reinovate-363109/cloud-run-source-deploy/konnect-mentor:latest \
+  --region us-central1 --platform managed --allow-unauthenticated</code></pre>
+
+<hr>
+
+<h2 id="security">Security</h2>
+
+<div class="feature-grid">
+  <div class="feature-item">
+    <strong>Firebase Auth</strong>
+    Email/Password + Google OAuth, Bearer tokens
+  </div>
+  <div class="feature-item">
+    <strong>Role-Based Access</strong>
+    User, Expert, Admin with middleware guards
+  </div>
+  <div class="feature-item">
+    <strong>Helmet</strong>
+    HTTP security headers on all responses
+  </div>
+  <div class="feature-item">
+    <strong>Rate Limiting</strong>
+    General: 100/15min, Auth: 20/15min, Admin: 500/15min
+  </div>
+  <div class="feature-item">
+    <strong>Zod Validation</strong>
+    All request bodies validated with schemas
+  </div>
+  <div class="feature-item">
+    <strong>WebRTC Encryption</strong>
+    P2P encrypted media, only signaling through server
+  </div>
+</div>
+
+<hr>
+
+<h2 id="features">Key Features Summary</h2>
+<table>
+  <thead><tr><th>Feature</th><th>User Frontend</th><th>Mentor Portal</th><th>Backend</th></tr></thead>
+  <tbody>
+    <tr><td>Email/Password Auth</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+    <tr><td>Google OAuth</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+    <tr><td>Mentor Discovery &amp; Search</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+    <tr><td>Real-time Chat</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+    <tr><td>Voice Calls (WebRTC)</td><td>Yes</td><td>Yes</td><td>Signaling</td></tr>
+    <tr><td>Video Calls (WebRTC)</td><td>Yes</td><td>Yes</td><td>Signaling</td></tr>
+    <tr><td>Per-minute Billing</td><td>Yes</td><td>-</td><td>Yes</td></tr>
+    <tr><td>Wallet &amp; Transactions</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+    <tr><td>Queue System</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+    <tr><td>Mentor Onboarding</td><td>-</td><td>Yes (4-step)</td><td>Yes</td></tr>
+    <tr><td>Admin Dashboard</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+    <tr><td>Mentor CRM Pipeline</td><td>Yes</td><td>-</td><td>Yes</td></tr>
+    <tr><td>Bulk Import (CSV/Sheets)</td><td>Yes</td><td>-</td><td>Yes</td></tr>
+    <tr><td>Session Management</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+    <tr><td>Reviews &amp; Ratings</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+    <tr><td>File Attachments</td><td>Yes</td><td>-</td><td>-</td></tr>
+  </tbody>
+</table>
+
+<div class="footer">
+  <p><strong>Konnect</strong> - Built with Firebase, React, Next.js, Express, Socket.IO, and WebRTC</p>
+  <p>Deployed on Google Cloud Run and Firebase Hosting</p>
+</div>
+
+</div>
+
+</body>
+</html>
