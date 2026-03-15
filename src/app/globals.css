@@ -1,26 +1,133 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/*
+  Konnect Design System — Warm Orange/Cream palette
+  Adapted from career-cosmos-connect theme
+*/
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  /* Core semantic colors (HSL mapped to hex for Tailwind v4) */
+  --color-background: #F5F0E8;
+  --color-foreground: #4D3B2F;
+
+  --color-card: #FFFFFF;
+  --color-card-foreground: #4D3B2F;
+
+  --color-primary: #E8530E;
+  --color-primary-foreground: #FFFFFF;
+  --color-primary-dark: #CC4400;
+  --color-primary-light: #FF7A3D;
+
+  --color-secondary: #E8E0D4;
+  --color-secondary-foreground: #5C4D3F;
+
+  --color-muted: #E5DDCF;
+  --color-muted-foreground: #8B7D6B;
+
+  --color-accent: #ECBF39;
+  --color-accent-foreground: #3D3020;
+  --color-accent-dark: #D4A820;
+
+  --color-success: #52B788;
+  --color-success-foreground: #FFFFFF;
+
+  --color-destructive: #FF6B6B;
+  --color-destructive-foreground: #FFFFFF;
+
+  --color-danger: #FF6B6B;
+
+  --color-border: #E0D5C7;
+  --color-input: #FFFFFF;
+  --color-ring: #E8530E;
+
+  --color-warning: #F59E0B;
+
+  /* Chat colors */
+  --color-chat-sent: #FFF0E6;
+  --color-chat-received: #FFFFFF;
+  --color-chat-system: #F5F0E8;
+
+  /* Surface */
+  --color-surface: #FAF7F2;
+
+  /* Fonts */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Gradients & shadows as CSS custom properties */
+:root {
+  --gradient-hero: linear-gradient(135deg, #F5F0E8 0%, #F0EAE0 100%);
+  --gradient-card: linear-gradient(to bottom, #FFFFFF 0%, #FAF7F2 100%);
+  --gradient-accent: linear-gradient(135deg, #E8530E 0%, #F07030 100%);
+
+  --shadow-sm: 0 2px 8px hsla(30, 20%, 20%, 0.06);
+  --shadow-md: 0 4px 16px hsla(30, 20%, 20%, 0.08);
+  --shadow-lg: 0 8px 32px hsla(30, 20%, 20%, 0.12);
+}
+
+* {
+  border-color: var(--color-border);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #d1c5b5;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b8a99a;
+}
+
+/* Chat message animations */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.message-enter {
+  animation: slideUp 0.2s ease-out;
+}
+
+/* Online status pulse */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.online-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* Ringing animation */
+@keyframes ring {
+  0% { transform: rotate(0deg); }
+  10% { transform: rotate(15deg); }
+  20% { transform: rotate(-15deg); }
+  30% { transform: rotate(15deg); }
+  40% { transform: rotate(-15deg); }
+  50% { transform: rotate(0deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.ring-animation {
+  animation: ring 1.5s ease-in-out infinite;
 }

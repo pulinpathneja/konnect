@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Konnect - Download App</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f8f9fa; color: #1a1a2e; min-height: 100vh; }
+  .header { background: linear-gradient(135deg, #E8530E, #ff7043); color: white; padding: 40px 24px; text-align: center; }
+  .header h1 { font-size: 2.2rem; margin-bottom: 8px; }
+  .header p { opacity: 0.9; font-size: 1rem; }
+  .container { max-width: 800px; margin: 0 auto; padding: 32px 24px; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin: 32px 0; }
+  .card { background: white; border-radius: 16px; padding: 32px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); text-align: center; transition: transform 0.2s; }
+  .card:hover { transform: translateY(-4px); }
+  .card-icon { font-size: 48px; margin-bottom: 16px; }
+  .card h2 { font-size: 1.4rem; margin-bottom: 8px; }
+  .card .platform { color: #888; font-size: 0.85rem; margin-bottom: 16px; }
+  .card .size { color: #666; font-size: 0.9rem; margin-bottom: 20px; }
+  .download-btn { display: inline-block; background: #E8530E; color: white; padding: 14px 32px; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 1rem; transition: background 0.2s; }
+  .download-btn:hover { background: #d14800; }
+  .download-btn.ios { background: #007AFF; }
+  .download-btn.ios:hover { background: #0056b3; }
+  .instructions { background: white; border-radius: 16px; padding: 28px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin: 24px 0; }
+  .instructions h3 { font-size: 1.1rem; margin-bottom: 12px; color: #E8530E; }
+  .instructions ol { margin-left: 20px; }
+  .instructions li { margin: 8px 0; line-height: 1.6; }
+  .instructions code { background: #f0f0f0; padding: 2px 6px; border-radius: 4px; font-size: 0.88em; }
+  .web-links { text-align: center; margin: 32px 0; }
+  .web-links h3 { margin-bottom: 16px; font-size: 1.1rem; }
+  .web-links a { display: inline-block; margin: 6px 8px; padding: 10px 20px; border: 2px solid #E8530E; color: #E8530E; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.2s; }
+  .web-links a:hover { background: #E8530E; color: white; }
+  .badge { display: inline-block; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; margin: 4px; }
+  .badge-green { background: #e8f5e9; color: #2e7d32; }
+  .badge-blue { background: #e3f2fd; color: #1565c0; }
+  .footer { text-align: center; padding: 24px; color: #888; font-size: 0.85rem; }
+  .version { text-align: center; margin: 16px 0; }
+  .version span { background: #fff3e0; color: #e65100; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Konnect</h1>
+  <p>Expert Mentorship Platform - Download for Testing</p>
+</div>
+
+<div class="container">
+
+  <div class="version">
+    <span>v1.0.0 - Testing Build - March 2026</span>
+  </div>
+
+  <div class="cards">
+    <div class="card" style="border: 3px solid #E8530E;">
+      <div class="card-icon">&#x1F310;</div>
+      <h2>Web App (Instant)</h2>
+      <p class="platform">Any Phone - iPhone & Android</p>
+      <p class="size">No download needed - opens in browser</p>
+      <span class="badge badge-green">Recommended</span>
+      <span class="badge" style="background:#fff3e0;color:#e65100;">No Install</span>
+      <br><br>
+      <a href="https://konnect-app.web.app" class="download-btn">Open Web App</a>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">&#x1F4F1;</div>
+      <h2>Android APK</h2>
+      <p class="platform">Android 5.0+ (API 21+)</p>
+      <p class="size">86 MB - Native App Install</p>
+      <span class="badge badge-green">Ready to Install</span>
+      <br><br>
+      <a href="https://storage.googleapis.com/reinovate-363109_cloudbuild/konnect-builds/Konnect-Android.apk" class="download-btn">Download APK</a>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">&#x1F34E;</div>
+      <h2>iOS Simulator</h2>
+      <p class="platform">iPhone Simulator (Xcode required)</p>
+      <p class="size">21 MB - Simulator Build</p>
+      <span class="badge badge-blue">Simulator Only</span>
+      <br><br>
+      <a href="https://storage.googleapis.com/reinovate-363109_cloudbuild/konnect-builds/Konnect-iOS-Simulator.zip" class="download-btn ios">Download .zip</a>
+    </div>
+  </div>
+
+  <div class="instructions">
+    <h3>Web App (Easiest - Works on Any Phone)</h3>
+    <ol>
+      <li>Open <a href="https://konnect-app.web.app" style="color:#E8530E;font-weight:600;">konnect-app.web.app</a> on your phone browser</li>
+      <li>Sign in with Google or use Demo mode</li>
+      <li>Optional: Tap "Add to Home Screen" in browser menu for app-like experience</li>
+    </ol>
+  </div>
+
+  <div class="instructions">
+    <h3>Android Installation</h3>
+    <ol>
+      <li>Download the APK file on your Android phone</li>
+      <li>Open the downloaded file</li>
+      <li>If prompted, allow installation from unknown sources in Settings</li>
+      <li>Tap "Install" and wait for installation to complete</li>
+      <li>Open the "Konnect" app and sign in with Google or use Demo mode</li>
+    </ol>
+  </div>
+
+  <div class="instructions">
+    <h3>iOS Simulator Installation</h3>
+    <ol>
+      <li>Download and unzip the file on your Mac</li>
+      <li>Open Xcode and launch an iPhone Simulator</li>
+      <li>Drag and drop <code>Konnect.app</code> onto the simulator window</li>
+      <li>Or run: <code>xcrun simctl install booted Konnect.app</code></li>
+      <li>Open the Konnect app in the simulator</li>
+    </ol>
+  </div>
+
+  <div class="web-links">
+    <h3>Other Platform Links</h3>
+    <a href="https://konnect-app.web.app">Mobile Web App</a>
+    <a href="https://reinovate-363109.web.app">User Frontend (Desktop)</a>
+    <a href="https://konnect-mentor-852352036956.us-central1.run.app">Mentor Portal</a>
+    <a href="https://konnect-docs.web.app">Documentation</a>
+  </div>
+
+  <div class="instructions">
+    <h3>Testing Checklist</h3>
+    <ol>
+      <li><strong>Login:</strong> Use "Continue as Demo User" or Google Sign-In</li>
+      <li><strong>Browse Mentors:</strong> Go to Explore tab, search and filter mentors</li>
+      <li><strong>Wallet:</strong> Add funds via Wallet tab (test amounts: 100, 200, 500)</li>
+      <li><strong>Chat:</strong> Start a chat with an available mentor</li>
+      <li><strong>Voice Call:</strong> During a chat, tap the phone icon to start a call</li>
+      <li><strong>Profile:</strong> Check your profile and settings</li>
+    </ol>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>Konnect v1.0.0 | Built with React Native + Expo</p>
+  <p>Backend: Cloud Run | Database: Firebase Firestore</p>
+</div>
+
+</body>
+</html>
